@@ -49,9 +49,9 @@ magneticvar = 2.0			; magnetic variance; east = positive (used to rotate lat/lon
 
 
 beacons =
-	cgs,	-12, 0,	main c-g-s
-	ceq, -17.7, -2.5, main c-e-q
-	nce, -4,4, main n-c-e
+	nce, -4.2,3.8, main n-c-e
+	ceq, -17.6, -4.6, main c-e-q
+	cgs,	-7.5, 2.5,	main c-g-s
 ## name, position, <holdingheading>, <pronunciation>
 # the first given beacon will be the default beacon for arrivals inbound the main airport
 # when holdingheading is 0 or omitted, planes will hold there using the plane's current heading
@@ -81,7 +81,7 @@ handoff =
 [airport1]
 ##############################################################
 
-name = Nice cote d'Azur, Nice	; Nice, <pronunciation>
+name = Nice cote d'Azur, Nice	; name of the main airport, <pronunciation>
 code = LFMN			; four letter code, displayed in airport menu (required; remove the #)
 
 runways =
@@ -144,7 +144,7 @@ name = Cannes Mandelieu, Mandelieu	; name of secondary airport, <pronunciation>
 code = LFMD					; two letter code, which will be added to the runways and plane tags
 
 runways =
-	rwy3,	17,	-18.0,	-2.0,	173.0,	5573,	0,	0,	2,	3,0,3,0,	WL,	8.0,	0,	0,	118.105,	mandelieu tower
+	rwy3,	17,	-17.6,	-5,	173.0,	5573,	0,	0,	2,	3,0,3,0,	WL,	8.0,	0,	0,	118.105,	mandelieu tower
 ## identifier, name, position, true_heading, <length>, <displaced>, <displaced2>, <elevation>, <glideslope>, <localizer>, <glideslope2>, <localizer2>, <beaconname, distance>, <beaconname2, distance2>, <tower frequency>, <tower pronunciation>
 # identifier must be unique to all other runways defined in this file
 

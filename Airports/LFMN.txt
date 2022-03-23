@@ -1,4 +1,4 @@
-#current version : 1.0
+#current version : 1.1
 
 #Airports :
 #LFMN
@@ -13,7 +13,6 @@
 
 #######################################################################################################################################################################
 
-# This file has several [sections] (but most are optional), namely:
 # [airspace]: various general properties
 # [airport1]: main airport
 # [airport2]: optional secondary airports
@@ -23,22 +22,6 @@
 # [approach1]: optional runway approach routes
 # [planetypes]: optional custom plane types
 # [scenario]: optional nonrandom traffic
-
-# Each section can have multiple items, each item with one or more properties. The format/order of properties are explained after a double hashtag (##) in this file.
-# Properties are comma separated. Multi-line properties (lists) MUST start with a tab or space at the beginning of each line.
-# Properties in this file that are explained between <brackets> are optional properties (do not include the brackets themselves).
-# If the game fails to load a property, or you omit, #comment or zero a property, the game may automatically use a default value instead.
-# Positions must be given either in x, y coordinates (in nautical miles, NM), with 0, 0 being the center of the screen, and 20.1, 12.82 being somewhere at the top left,
-# or, in latitude, longitude coordinates, which must be a comma separated pair, starting or ending with NWSE characters; two examples:
-# N51.47176,		W0.457859
-# 51°28'18.336''N,	0°27'28.2924''W
-# Lat/long coordinates (and true headings) are rotated automatically when a magnetic variance is defined; this is to align the radar display with the magnetic north,
-# to make a heading of 360 degrees appear as a vertical line on the radar screen.
-# X, y coordinates are simple screen coordinates; they are not rotated.
-# Either way, all positions consist of two values, seperated by a comma. Whether you want to use x,y or latlong coordinates is up to you.
-# For real world data it is probably easier to search the internet for the actual latlong coordinates.
-# Press the left Ctrl key in the sim to display the coordinates of the mouse position. These values are also copied into the Windows clipboard, to be easily pasted into a file.
-
 
 ##############################################################
 [airspace]
@@ -90,13 +73,6 @@ handoff =
 ## heading, atc callsign, callsign pronunciation, <radio frequency>
 # optional handoff readbacks for departures; only used when sound mode 3 is enabled in-game
 # heading determines which atc station will be selected by a plane: the closest to the heading from the center of the screen towards the plane's (last) SID point
-
-#anciennement line1
-
-## positions
-# pointlist of optional green (coast)line.
-
-#anciennement line2
 
 # all items in this section are optional unless stated otherwise
 
@@ -168,7 +144,7 @@ name = Cannes Mandelieu, Mandelieu	; name of secondary airport, <pronunciation>
 code = LFMD					; two letter code, which will be added to the runways and plane tags
 
 runways =
-	rwy2,	17,	-18.0,	-2.0,	173.0,	5573,	0,	0,	2,	3,0,3,0,	WL,	8.0,	0,	0,	118.105,	mandelieu tower
+	rwy3,	17,	-18.0,	-2.0,	173.0,	5573,	0,	0,	2,	3,0,3,0,	WL,	8.0,	0,	0,	118.105,	mandelieu tower
 ## identifier, name, position, true_heading, <length>, <displaced>, <displaced2>, <elevation>, <glideslope>, <localizer>, <glideslope2>, <localizer2>, <beaconname, distance>, <beaconname2, distance2>, <tower frequency>, <tower pronunciation>
 # identifier must be unique to all other runways defined in this file
 
@@ -235,9 +211,9 @@ points =
 ##############################################################
 
 config1 =
-	0,	rwy1,	landstart
-	7,	rwy1,	startland,	020,	nosid
-	8,	rwy2,	startlandrev
+	0,	rwy1,	land
+	7,	rwy2,	start
+	8,	rwy3,	startland
 ## score, identifier, usage, <offsetheading>, <nosid>
 # score is the score (skill) at which the runway will be activated
 # identifier is a unique runway name specified earlier
@@ -247,148 +223,3 @@ config1 =
 # nosid option means planes will depart on the given offsetheading, with SID mode disabled
 # the list must be ordered with increasing score values (as in this example 0, 7, 8)
 # when rwy configurations are omited, two configs are automatically created, one for each rwy direction, with all runways active
-
-config2 =
-	0,	rwy1,	landstartrev
-	7,	rwy1,	startlandrev,	200,	nosid
-	8,	rwy2,	startland
-
-
-##############################################################
-[departure1]
-##############################################################
-
-runway = rwy2			; runway identifier, <reversed use>
-route1 = 
-	bco2, beacon two
-	12,	0
-	18.6,	0
-	18.6,	6.8
-	25,	16.5
-# first line of the route is the sid name (up to 7 characters will be displayed), and optional <pronunciation> of the sid name
-# next lines are one or more waypoint positions
-# first waypoint may have an optional altitude value; this will override the default climbaltitude
-
-route2 = 
-	south
-	12,	0
-	15.3,	-4.7
-	0,	-16.6
-	0,	-25
-## name, <pronunciation>
-## waypoint1 position, <climbaltitude>
-## waypoint position
-## waypoint position
-
-# the optional [departure] section adds routes to a specific runway direction
-# this overrides the default (single waypoint) SIDs with more detailed routes, and applies the routes to the specified runway only
-# departing planes from that runway will then follow the one of the routes, unless the user deactivates SID mode
-# re-enabling SID mode (or longpressing SID) will select just the last point of the route
-# defining one or more departure routes disables all the default SID points for that runway; planes will use the given routes only
-# use one [departure] section per runway direction, each with one or more routes
-# [departure] routes are not used in the built-in airports, for simplicity
-
-
-##############################################################
-[approach1]
-##############################################################
-
-runway = rwy1					; runway identifier, <reversed use>
-beacon = lima,	1,	10,	0,	lima		; selectable beacon to enable APP mode; define a beacon, or choose a name from beacon list above
-route1 = 
-	060,	lima1a,	lima one alpha
-	-3,	22,	5500,	210
-	1,	22
-	1,	18,	4000
-	-3,	18, 	0,	180
-	10.5,	3000,	200
-# first item of the route is the bearing from the plane towards the beacon; if there are multiple routes defined in this section, the closest bearing determines which route is selected; but if only one route is defined then the bearing can just be a random number; optionally add a name and pronunciation for the route
-# next lines are optional waypoints: ## position, <maximum altitude>, <maximum speed>
-# last line is the interception point on the ILS: ## distance (NM) from the (displaced) threshold, <maximum altitude>, <maximum speed>
-# alternatively the last line can be used to end the route before it reaches the ILS (requiring vectors), using the word end: ## end, <heading>
-# or, to hold at the last waypoint, use: ## end, hold
-
-route2 = 
-	310,	lima2b,	lima two bravo
-	1,	18,	4000
-	-3,	18, 	0,	180
-	10.5,	3000,	200
-## bearing, <name>, <pronunciation>
-## waypoint position, <maximum altitude>, <maximum speed>
-## waypoint position, <maximum altitude>, <maximum speed>
-## interception distance, <maximum altitude>, <maximum speed>
-
-route3 = 
-	010
-	1,	10
-	1,	18,	4000
-	-3,	18, 	0,	180
-	10.5,	3000,	200
-
-# the optional [approach] section adds route(s) to a specific runway
-# multiple [approach] sections can be used for the same runway, to allow for multiple app beacons
-# for easier creation of routes, use left Ctrl key to display current mouse coordinates, and left click while holding down Ctrl places temporary visual markers
-# Longpress the airport name button in the airport menu to display all routes at once
-# [approach] routes are not used in the built-in airports as the game is focussed on vectors for simplicity
-
-
-##############################################################
-[planetypes]
-##############################################################
-types = 
-	f200, 5, 140, 230, 2.9, 3.2, 1400, 1600, 115, 125, 1.1, 1.2, big jet
-	c271, 6, 90, 120, 2.9, 3.2, 1400, 1600, 90, 105, 1.1, 1.2, singleprop
-## type, category, minspeed, maxspeed, minturnrate, maxturnrate, mindescentrate, maxdescentrate, minfinalapproachspeed, maxfinalapproachspeed, minaccelrate, maxaccelrate, <manufacturer>
-# custom [planetypes] are only needed when using unknown custom types in the airlinelists above (game will show warnings on startup for missing types), or to override default type properties
-# category is the weight category: 1 to 6, meaning superheavy=1, upperheavy, lowerheavy, uppermedium, lowermedium, light=6
-# speeds in knots
-# turnrate is in degrees per second
-# descentrate is in feet per minute
-# approachspeeds in knots, may be below minspeed
-# accelrate is in knots per second
-# manufacturer name is optional, and only used for private callsign pronunciation in usa mode
-# example of default values for b737, 4, 160, 250, 2.6, 3.0, 1440, 1560, 131, 144, 1.2, 1.3
-
-
-##############################################################
-[scenario]
-##############################################################
-finish = 2,	1200	; amount of planes to land to finish the scenario, <time limit in seconds>
-
-events = 
-	0,	config,	1
-	0,	score,	6
-	0,	wind,	180,	10
-	0,	cloud,	-1,	25
-	0,	cloud,	-2,	24
-	0,	cloud,	-4,	24
-	0,	dep,	rwy1,	north,	f200
-	0,	elapse, 20
-	0,	arr,	230,	vor,	f200
-	0,	elapse, 100
-	5,	arr,	90,	bco,	f200
-	40,	dep,	rwy1,	north,	f200
-	70,	dep,	rwy1,	south,	a333
-	20,	score,	8
-	90,	dep,	rwy1,	north
-	0,	wind,	200,	8
-	0,	cloud,	19,	-26.5
-	50,	dep,	rwy1,	west,	f200
-	1,	text,	Hello!
-	5,	arr,	210,	vor,	a333,	15000,	6000,	300,	0,	0,	1,	air
-	10,	arr,	090,	0,	0,	0,	0,	0,	0,	0,	0,	0,	sc
-	10,	dep,	rwy2,	north
-## elapsed time after previous event in seconds, eventtype, properties
-# available eventtypes: arr, dep, score, elapse, wind, cloud, config, text
-## arr: entrypoint, <beacon>, <planetype>, <altitude>, <targetaltitude>, <speed>, <delaytimer>, <fuel>, <emergency>, <callsign>, <destination>, <nordo>
-# for arrivals, the fuel counts up; lowfuel from 4700+, emergency=1 for medical, 2 for engine,
-# destination is a two letter code of a secondary airport, nordo is the amount of seconds before the pilot starts to communicate
-## dep: runwayidentifier, sid, <planetype>, <emergency>, <callsign>, <destination>, <nordo>
-# for departures, the optional destination is a two letter code, or 1 for the main airport
-## score: score			; set higher score/skill to open more runways, or lower to close runways
-## elapse: seconds		; elapse simulation time between events (only use this to build traffic before the start, so at time 0)
-## wind: heading, speed		; set wind (preferably in small steps when changing the wind)
-## cloud: position		; add cloud with radius of 1 NM (preferably just outside the airspace boundary, to avoid incidents, unless time is 0)
-## config: entry		; change to different runway config, as specified in the runway [configurations] section
-## text: message		; display yellow text at the top of screen
-# the [scenario] can be enabled in the traffic menu

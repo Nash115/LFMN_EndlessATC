@@ -1,3 +1,5 @@
+# ! THIS FILE IS A BACKUP FILE !
+
 # Custom airport file
 # Save a copy of example.txt before editing it, to keep this file as a guide.
 # On Windows, place the txt file in the /locations/ folder of the game.

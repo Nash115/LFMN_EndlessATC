@@ -1,4 +1,4 @@
-#current version : 2.0
+#current version : 3.0
 
 #Airports :
 #LFMN
@@ -85,8 +85,8 @@ name = Nice cote d'Azur, Nice	; name of the main airport, <pronunciation>
 code = LFMN			; four letter code, displayed in airport menu (required; remove the #)
 
 runways =
-	rwy1,	04R,	-4.3,	2.75,	045.0,	9713,	0,	0,	1,	3,	360.0,	3,	110.700,	YY,	8.0,	ZZ,	8.5,	118.7,	tower 
-	rwy2,	04L,	-4.3,	3.23,	045.0,	8426,	0,	0,	1,	3,	360.0,	3,	109.950,	YY,	8.0,	ZZ,	8.5,	118.7,	tower
+	rwy1,	04L,	-4.3,	3.23,	045.0,	8426,	0,	0,	1,	3,	360.0,	3,	109.950,	LEMPU,	8.0,	ZZ,	8.5,	118.7,	tower
+	rwy2,	04R,	-4.3,	2.75,	045.0,	9713,	0,	0,	1,	3,	360.0,	3,	110.700,	YY,	8.0,	ZZ,	8.5,	118.7,	tower 
 ## identifier, name, position, true_heading, <length>, <displaced>, <displaced2>, <elevation>, <glideslope>, <localizer>, <glideslope2>, <localizer2>, <beaconname, distance>, <beaconname2, distance2>, <tower frequency>, <tower pronunciation>
 # identifier is a unique name used to define a runway usage configuration later in this file
 # name is one or two digits, optionally suffixed with an L, R or C character
@@ -124,8 +124,8 @@ airlines =
 	AFR,	1,	B747,		Airfrance,	nwe
 	EZY,	1,	A320,		Easy,		nwe
 	KLM,	1,	A320,		KLM,			nwe
-	JXL,	0.42,A320,		Airjixel,		nwe
-	NSH,	0.42,A320,		Airnash,		nwe
+#	JXL,	0.42,A320,		Airjixel,		nwe
+#	NSH,	0.42,A320,		Airnash,		nwe
 ## name, amount, planetype, pronunciation, <direction>
 # name is the 3 letter airline code, or a private regristration (with a land code, dash(-), and then the format)
 # amount determines the relative likelihood of appearance (e.g. 0=never, 0.1=rarely, 1=occasionally, 10=frequently, etc)
@@ -144,7 +144,7 @@ name = Cannes Mandelieu, Mandelieu	; name of secondary airport, <pronunciation>
 code = LFMD					; two letter code, which will be added to the runways and plane tags
 
 runways =
-	rwy3,	17,	-17.6,	-5,	173.0,	5573,	0,	0,	2,	3,0,3,0,	WL,	8.0,	0,	0,	118.105,	mandelieu tower
+	rwy3,	17,	-17.7654354949233,	-3.9751329916427,	173.0,	5573,	0,	0,	2,	3,0,3,0,	WL,	8.0,	0,	0,	118.105,	mandelieu tower
 ## identifier, name, position, true_heading, <length>, <displaced>, <displaced2>, <elevation>, <glideslope>, <localizer>, <glideslope2>, <localizer2>, <beaconname, distance>, <beaconname2, distance2>, <tower frequency>, <tower pronunciation>
 # identifier must be unique to all other runways defined in this file
 
@@ -173,36 +173,130 @@ sids =
 
 # You can add more airports sections if needed ([airport3], etc).
 
-##############################################################
+
+########################___TERRAIN___#########################
 [area1]
 ##############################################################
 shape = polygon		; circle or polygon
-altitude = 3500		; minimum allowed altitude in feet
-#name = X		; <name, if omited then planes inbound the main airport may enter this area>
-draw = 0		; <number of invisible lines at the end of the polygon, omit for a full polygon>
-labelpos = -4, 0	; <position of label>
+#altitude = 3500		; minimum allowed altitude in feet
+##name = X		; <name, if omited then planes inbound the main airport may enter this area>
+draw = 1		; <number of invisible lines at the end of the polygon, omit for a full polygon>
+#labelpos = -4, 0	; <position of label>
 points =
-	5,	13
-	5,	-3
-	-15,	-14
-	-15, 5
+	-17.4538538285827,-8.0164138079644
+	-17.4943338445966,-7.5973265833501
+	-18.1563011652941,-7.3996888581059
+	-18.3682259550138,-7.313966471253
+	-18.3944189065522,-6.7662956663593
+	-18.5063342449435,-6.6710485698561
+	-18.3206024067622,-6.6115191345416
+	-17.6236440920376,-5.358297914342
+	-17.1496328094571,-4.9457325387627
+	-16.6492875667332,-4.6560589771857
+	-16,-4.5
+	-15.271143652564,-4.3576074288943
+	-14.5601267286933,-4.410275349181
+	-13.9807796055394,-4.313717495322
+	-13.4365444292433,-4.5595011233267
+	-13.2303611686702,-5.3428097957297
+	-13.1113733411526,-5.3775145787556
+	-12.992385513635,-4.8767741379523
+	-12.5684913781034,-4.5495576122788
+	-12.2611061570162,-4.4975004377398
+	-11.763621607036,-3.7103713401204
+	-11.4678639282319,-3.3174991996194
+	-11.0176059694555,-3.0658844579502
+	-10.2,-2.8
+	-9.6712463868397,-2.8363411848485
+	-9.1062167915125,-3.1144416887986
+	-8.7398304132925,-3.6132568784235
+	-8.7310018258655,-4.1606292988968
+	-9,-4.4
+	-8.8281162875624,-4.6020586702462
+	-8.8810878121243,-4.8139447684939
+	-8.735416119579,-4.8978163490503
+	-8.6692017138766,-4.7742161250725
+	-8.7707304692869,-4.734487481651
+	-8.691273182444,-4.5976443765327
+	-8.360201153932,-4.5932300828192
+	-8.3381296853645,-4.7565589502185
+	-7.888558871271,-4.6021197677074
+	-7.9021451118449,-4.3813433583814
+#A2 to z2
+	-7.531920056206,-4.1537738287685
+	-7.6134374996494,-3.8956352578643
+	-7.9734728748579,-3.9635664607338
+	-8.0481971980144,-3.7835487731295
+	-7.8376104691189,-3.4167202776341
+	-7.9293175929927,-3.131409225582
+	-7.745903345245,-2.9445984176908
+	-7.7696792662493,-2.8562878539604
+	-8.1195249610274,-2.8494947336735
+	-8.2621804870534,-2.9479949778343
+	-8.6,-2.6
+	-8.3833985566398,-2.0024757316229
+	-8.5,0
+	-8.2669078364496,0.8631959850569
+	-7.987330107993,1.6165026422871
+	-6.278799545203,3.4725881173181
+	-5.7041119922645,3.402693685204
+	-4.7329263689176,3.3151868997341
+	-3.0557818346711,4.9840899374979
+	-2.5691027157848,5.6228222623439
+	-1.6898970555188,6.0855620835366
+	-0.4206678316762,6.0855620835366
+	0.0817354027615,5.993014119298
+	0.319715882232,5.6029905557214
+#a3 to p3
+	0.9146670809082,5.550106004728
+	1.2716378001139,7.0110417259218
+	1.641829657068,6.9515466060542
+	1.6550507948164,6.5483019047292
+	1.8864207054127,6.5747441802259
+	1.9855792385254,6.2376051676427
+	1.6021662438229,5.8740238795628
+	1.9062524120352,4.783280015323
+	2.3623816643537,4.7965011530714
+	2.4417084908438,5.589769417973
+	3.1159865160102,5.5831588490989
+	2.3888239398504,5.9401295683046
+	2.1508434603799,6.7664506775771
+	2.3557710954795,6.7466189709546
+	2.6466361259434,7.4671709782403
+	3.1490393603811,7.6258246312206
 ## positions
 # the last point will be automatically connected to the first point
 
 ##############################################################
-[area2]
+#[area1]
 ##############################################################
-shape = polygon		; circle or polygon
-altitude = 4000		; minimum allowed altitude in feet
-#name = X		; <name, if omited then planes inbound the main airport may enter this area>
-draw = 0		; <number of invisible lines at the end of the polygon, omit for a full polygon>
-labelpos = -20, -5	; <position of label>
-points =
-	-15, 5
-	-23, 5
-	-25, 0
-	-25, -20
-	-15, -14
+#shape = polygon		; circle or polygon
+#altitude = 3500		; minimum allowed altitude in feet
+##name = X		; <name, if omited then planes inbound the main airport may enter this area>
+#draw = 0		; <number of invisible lines at the end of the polygon, omit for a full polygon>
+#labelpos = -4, 0	; <position of label>
+#points =
+#	5,	13
+#	5,	-3
+#	-15,	-14
+#	-15, 5
+## positions
+# the last point will be automatically connected to the first point
+
+##############################################################
+#[area2]
+##############################################################
+#shape = polygon		; circle or polygon
+#altitude = 4000		; minimum allowed altitude in feet
+##name = X		; <name, if omited then planes inbound the main airport may enter this area>
+#draw = 0		; <number of invisible lines at the end of the polygon, omit for a full polygon>
+#labelpos = -20, -5	; <position of label>
+#points =
+#	-15, 5
+#	-23, 5
+#	-25, 0
+#	-25, -20
+#	-15, -14
 ## positions
 # the last point will be automatically connected to the first point
 

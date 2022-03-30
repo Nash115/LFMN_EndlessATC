@@ -1,4 +1,4 @@
-#current version : 3.0
+#current version : 3.1
 
 #Airports :
 #LFMN
@@ -58,11 +58,11 @@ beacons =
 # when a holdingheading is given, planes will fly that heading (or magnetic course) on the inbound leg when flying the holding
 # when holdingheading is negative, planes will make left-hand turns instead of right-hand turns
 
-boundary = 
-	-25, -23
-	25, -23
-	25, 24
-	-25, 24
+#boundary = 
+#	-25, -23
+#	25, -23
+#	25, 24
+#	-25, 24
 ## positions
 # pointlist of optional airspace boundary polygon; this will override the default (circular) airspace radius.
 # last point is automatically connected to first point
@@ -306,7 +306,7 @@ points =
 
 config1 =
 	0,	rwy1,	land
-	7,	rwy2,	start
+	6,	rwy2,	start
 	8,	rwy3,	startland
 ## score, identifier, usage, <offsetheading>, <nosid>
 # score is the score (skill) at which the runway will be activated

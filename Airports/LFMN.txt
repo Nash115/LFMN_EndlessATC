@@ -1,4 +1,4 @@
-#current version : 3.1
+#current version : 4.0
 
 #Airports :
 #LFMN
@@ -27,7 +27,7 @@
 [airspace]
 ##############################################################
 
-radius = 30				; airspace radius in NM
+radius = 45				; airspace radius in NM
 zoom = 7.0 				; default zoom level, increase to zoom in
 elevation = 2 				; ground altitude in feet
 floor = 1500 				; minimum selectable altitude (1100 to 2500 above elevation)
@@ -49,7 +49,8 @@ magneticvar = 2.0			; magnetic variance; east = positive (used to rotate lat/lon
 
 
 beacons =
-	nce, -4.2,3.8, main n-c-e
+#	nce, -4.2,3.8, main n-c-e
+	nce, -4.8690533231701,3.2807828445799, main n-c-e
 	ceq, -17.6, -4.6, main c-e-q
 	cgs,	-7.5, 2.5,	main c-g-s
 ## name, position, <holdingheading>, <pronunciation>
@@ -58,14 +59,56 @@ beacons =
 # when a holdingheading is given, planes will fly that heading (or magnetic course) on the inbound leg when flying the holding
 # when holdingheading is negative, planes will make left-hand turns instead of right-hand turns
 
-#boundary = 
-#	-25, -23
-#	25, -23
-#	25, 24
-#	-25, 24
-## positions
+boundary = 
+	-48.9926535061142,-28.366588154246
+	9.7545685566721,-37.0260692248546
+	19.1745426764543,-61.0923921218799
+	38.8075842311376,-50.0380109532603
+	57.9378233182275,-5.566747218559
+	24.4899294048528,6.1642532554075
+	34.2819215360146,15.6653941351489
+	18.3534442941948,29.8946547443365
+	18.4863636267034,31.4896867344403
+	15.8944366427848,34.2809927171219
+	16.6919526378367,37.3381373648209
+	14.4987836514441,37.4045970310752
+	13.6348079901379,35.6101860422084
+	1.6056083981054,33.2176380570527
+	-12.7496795128284,41.658015671352
+	-32.421740724108,30.7586304056427
+	-27.7695640863054,4.5735219014388
+	-34.0606403969562,0.6814928481444
+	-47.3977575778081,0.5447019026998
+	-52,4
+	-58.6488128406293,2.0152045662297
+	-29.6491324063667,-8.6886869148133
+	-29.4908111346539,-17.533816413558
+	-33.036842555364,-20.2990702737448
+	-38.2745586905412,-19.648422306642
+# positions
 # pointlist of optional airspace boundary polygon; this will override the default (circular) airspace radius.
 # last point is automatically connected to first point
+
+line1 =
+	-14,-5.75
+	-12.7,-5.75
+	-12.7, -7.05
+
+	-12.71, -7.06
+	-12.71,-5.76
+	-14.01,-5.76
+
+	-14.02,-5.77
+	-12.72,-5.77
+	-12.72, -7.07
+
+	-12.73, -7.08
+	-12.73,-5.78
+	-14.03,-5.78
+
+	-14.04,-5.79
+	-12.74,-5.79
+	-12.74, -7.09
 
 handoff =
 	090, Radar East, radar east, 123.5
@@ -85,7 +128,7 @@ name = Nice cote d'Azur, Nice	; name of the main airport, <pronunciation>
 code = LFMN			; four letter code, displayed in airport menu (required; remove the #)
 
 runways =
-	rwy1,	04L,	-4.3,	3.23,	045.0,	8426,	0,	0,	1,	3,	360.0,	3,	109.950,	LEMPU,	8.0,	ZZ,	8.5,	118.7,	tower
+	rwy1,	04L,	-4.3,	3.23,	045.0,	8426,	0,	0,	1,	3,	360.0,	3,	109.950,	LEMPU,	12.37,	ZZ,	8.5,	118.7,	tower
 	rwy2,	04R,	-4.3,	2.75,	045.0,	9713,	0,	0,	1,	3,	360.0,	3,	110.700,	YY,	8.0,	ZZ,	8.5,	118.7,	tower 
 ## identifier, name, position, true_heading, <length>, <displaced>, <displaced2>, <elevation>, <glideslope>, <localizer>, <glideslope2>, <localizer2>, <beaconname, distance>, <beaconname2, distance2>, <tower frequency>, <tower pronunciation>
 # identifier is a unique name used to define a runway usage configuration later in this file
@@ -110,20 +153,30 @@ sids =
 # you may also give just the name of a beacon from the beacon list
 
 entrypoints = 
-	090
-	270,	bco
+	130
+	360,	bco
+	007
+	358
+	250
 ## true_heading, <beaconname>, <altitude>
 # this is where new arrivals enter at the boundary (approximately), e.g. 090 means planes will enter from the east, heading 270 (westbound)
 # inbound beacon is optional; choose a beacon name from the beacon list above; otherwise the first beacon from that list is chosen automatically
 # optional descentaltitude for this entrypoint; otherwise the default descentaltitude is used
 
 airlines =
-	AFR,	2,	A320,		Airfrance,	nwe
-	AFR,	1,	A321,		Airfrance,	nwe
-	AFR,	1,	A319,		Airfrance,	nwe
-	AFR,	1,	B747,		Airfrance,	nwe
-	EZY,	1,	A320,		Easy,		nwe
+	AFR,	2,	A320,		Airfrance,		nwe
+	AFR,	1,	A321,		Airfrance,		nwe
+	AFR,	1,	A319,		Airfrance,		nwe
+	AFR,	1,	B747,		Airfrance,		nwe
+	EZY,	2,	A320,		Easy,			nwe
 	KLM,	1,	A320,		KLM,			nwe
+	XK2,	1,	A320,		Corsica,		nwe
+	LGL,	1,	A320,		Luxair,			nwe
+	BAW,	1,	A320,		British Airways,nwe
+	DLH,	2,	A320,		Lufthansa,		nwe
+	SWR,	1,	A320,		Swiss,			nwe
+	WZZ,	1,	A320,		Wizz,				nwe
+
 #	JXL,	0.42,A320,		Airjixel,		nwe
 #	NSH,	0.42,A320,		Airnash,		nwe
 ## name, amount, planetype, pronunciation, <direction>
@@ -183,14 +236,38 @@ shape = polygon		; circle or polygon
 draw = 1		; <number of invisible lines at the end of the polygon, omit for a full polygon>
 #labelpos = -4, 0	; <position of label>
 points =
-	-17.4538538285827,-8.0164138079644
-	-17.4943338445966,-7.5973265833501
-	-18.1563011652941,-7.3996888581059
-	-18.3682259550138,-7.313966471253
-	-18.3944189065522,-6.7662956663593
-	-18.5063342449435,-6.6710485698561
-	-18.3206024067622,-6.6115191345416
-	-17.6236440920376,-5.358297914342
+	-38,-30
+	-37.0041076609258,-29.1274865933578
+	-36.4376074636931,-29.3889482228498
+	-35.9364726738335,-28.8442364947415
+	-36.4811844019418,-28.5391979270008
+	-35.2610301309792,-27.5151398781572
+	-33.4090102554109,-27.9073323223952
+	-32.2542213918213,-29.5414675067201
+	-31.7312981328373,-28.5827748652495
+	-30.925124775237,-28.8442364947415
+	-31.2301633429777,-27.6458706929032
+	-28.8770086775498,-26.7307549896812
+	-30,-26
+	-30.2828246664503,-22.8331956433359
+	-33.0870657696035,-21.2171922957561
+	-29.9075083309302,-19.6429996422952
+	-30.0760410841268,-18.3790039933207
+	-28.0536480457676,-17.3256742858419
+	-26.1400798832353,-12.6338948860638
+	-24.7516263344953,-13.2995917929939
+	-21.5562811812307,-13.1284125883547
+	-21.0427435673132,-12.7289944441966
+	-21.366082064965,-11.7019192163616
+	-20.8335245394209,-11.7019192163616
+	-20.5101860417691,-12.2534966535323
+	-19.3309515209215,-12.0632975372665
+	-19.4831108139341,-11.4546603652161
+	-18.2658364698333,-10.5987643420202
+	-17.8283785024221,-8.5065740630969
+	-17.0835515529498,-8.438566995612
+	-16.8715187307991,-6.9543372405571
+	-17.5712270438964,-6.7635077006215
 	-17.1496328094571,-4.9457325387627
 	-16.6492875667332,-4.6560589771857
 	-16,-4.5
@@ -222,7 +299,6 @@ points =
 	-8.3381296853645,-4.7565589502185
 	-7.888558871271,-4.6021197677074
 	-7.9021451118449,-4.3813433583814
-#A2 to z2
 	-7.531920056206,-4.1537738287685
 	-7.6134374996494,-3.8956352578643
 	-7.9734728748579,-3.9635664607338
@@ -238,65 +314,40 @@ points =
 	-8.5,0
 	-8.2669078364496,0.8631959850569
 	-7.987330107993,1.6165026422871
-	-6.278799545203,3.4725881173181
-	-5.7041119922645,3.402693685204
-	-4.7329263689176,3.3151868997341
-	-3.0557818346711,4.9840899374979
-	-2.5691027157848,5.6228222623439
-	-1.6898970555188,6.0855620835366
-	-0.4206678316762,6.0855620835366
-	0.0817354027615,5.993014119298
-	0.319715882232,5.6029905557214
-#a3 to p3
-	0.9146670809082,5.550106004728
-	1.2716378001139,7.0110417259218
-	1.641829657068,6.9515466060542
-	1.6550507948164,6.5483019047292
-	1.8864207054127,6.5747441802259
-	1.9855792385254,6.2376051676427
-	1.6021662438229,5.8740238795628
-	1.9062524120352,4.783280015323
-	2.3623816643537,4.7965011530714
-	2.4417084908438,5.589769417973
-	3.1159865160102,5.5831588490989
-	2.3888239398504,5.9401295683046
-	2.1508434603799,6.7664506775771
-	2.3557710954795,6.7466189709546
-	2.6466361259434,7.4671709782403
-	3.1490393603811,7.6258246312206
-## positions
-# the last point will be automatically connected to the first point
-
-##############################################################
-#[area1]
-##############################################################
-#shape = polygon		; circle or polygon
-#altitude = 3500		; minimum allowed altitude in feet
-##name = X		; <name, if omited then planes inbound the main airport may enter this area>
-#draw = 0		; <number of invisible lines at the end of the polygon, omit for a full polygon>
-#labelpos = -4, 0	; <position of label>
-#points =
-#	5,	13
-#	5,	-3
-#	-15,	-14
-#	-15, 5
-## positions
-# the last point will be automatically connected to the first point
-
-##############################################################
-#[area2]
-##############################################################
-#shape = polygon		; circle or polygon
-#altitude = 4000		; minimum allowed altitude in feet
-##name = X		; <name, if omited then planes inbound the main airport may enter this area>
-#draw = 0		; <number of invisible lines at the end of the polygon, omit for a full polygon>
-#labelpos = -20, -5	; <position of label>
-#points =
-#	-15, 5
-#	-23, 5
-#	-25, 0
-#	-25, -20
-#	-15, -14
+	-7.1930328171129, 2.9103522231639
+	-5.4793371166888, 2.9349507260408
+	-4.1100204565414,4.0008858507065
+	-3.1162760530422,5.1649122345537
+	-1.1635203126088,4.83294375868
+	-0.4019455738398,4.83294375868
+	0.0081331316512,6.1998727769834
+	0.4767945093552,5.8093216288967
+	0.5353771815683,4.0518414625066
+	1,4
+	0.7892354278246,4.9305815457017
+	1.3750621499546,4.6767232994453
+	1.7737570983432,4.9468065233148
+	0.8379557780226,5.8826078436354
+	1,6.5
+	2.2014774367363,7.3813136852975
+	3.3306253817392,7.3503781251605
+	4.2741599659196,7.0487564138241
+	6.6639319865078,9.7169484756459
+	8.1166189472461,8.9470550894681
+	10.6590717048504,11.2861116264641
+	12.8964301315421,12.0318977686947
+	16.625360842695,11.2861116264641
+	17.6208110522941,11.5986569234741
+	18.5371039998101,12.5565995504228
+	19.6199956650564,12.3067014738275
+	21.1610338040606,13.6603160553853
+	22.8686706607951,13.9310389716969
+	24,14
+	25.2843520678829,14.8681567589292
+	28.4705525444727,15.4929019504175
+	30,16
+	30.6571607146815,17.0964146085706
+	31.9626639461961,17.7372381767576
 ## positions
 # the last point will be automatically connected to the first point
 

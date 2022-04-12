@@ -1,4 +1,4 @@
-#current version : 4.0
+#current version : 4.1
 
 #Airports :
 #LFMN
@@ -172,13 +172,10 @@ airlines =
 	KLM,	1,	A320,		KLM,			nwe
 	XK2,	1,	A320,		Corsica,		nwe
 	LGL,	1,	A320,		Luxair,			nwe
-	BAW,	1,	A320,		British Airways,nwe
+	BAW,	1,	A320,		British Airways,	nwe
 	DLH,	2,	A320,		Lufthansa,		nwe
 	SWR,	1,	A320,		Swiss,			nwe
-	WZZ,	1,	A320,		Wizz,				nwe
-
-#	JXL,	0.42,A320,		Airjixel,		nwe
-#	NSH,	0.42,A320,		Airnash,		nwe
+	WZZ,	1,	A320,		Wizz,			nwe
 ## name, amount, planetype, pronunciation, <direction>
 # name is the 3 letter airline code, or a private regristration (with a land code, dash(-), and then the format)
 # amount determines the relative likelihood of appearance (e.g. 0=never, 0.1=rarely, 1=occasionally, 10=frequently, etc)

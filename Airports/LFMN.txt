@@ -1,4 +1,4 @@
-#current version : 4.3
+#current version : 4.5
 
 #Airports :
 #LFMN
@@ -111,7 +111,7 @@ line1 =
 	-12.74, -7.09
 
 handoff =
-	000, Aix en Provence, aix control, 126.780
+	000, Aix en Provence, aix control, 127.905
 ## heading, atc callsign, callsign pronunciation, <radio frequency>
 # optional handoff readbacks for departures; only used when sound mode 3 is enabled in-game
 # heading determines which atc station will be selected by a plane: the closest to the heading from the center of the screen towards the plane's (last) SID point

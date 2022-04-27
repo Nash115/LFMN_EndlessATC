@@ -1,4 +1,4 @@
-#current version : 4.21
+#current version : 4.3
 
 #Airports :
 #LFMN
@@ -164,7 +164,7 @@ entrypoints =
 # optional descentaltitude for this entrypoint; otherwise the default descentaltitude is used
 
 airlines =
-	AFR,	2,	A320,		Airfrance,		nwe
+	AFR,	3,	A320,		Airfrance,		nwe
 	AFR,	1,	A321,		Airfrance,		nwe
 	AFR,	1,	A319,		Airfrance,		nwe
 	AFR,	1,	B747,		Airfrance,		nwe
